@@ -1,15 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Caesar Cipher</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Original-Secret Note</title>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <div id="root">
-      <h1>Esto ha sido clonado</h1>
-    </div>
-    <script src="cipher.js"></script>
-    <script src="index.js"></script>
+    <header>
+      <p class="header">Secret Note</p>
+    </header>
+    <main id="main">
+      <div id="firstSection" class="note">
+        <img class="sumSymbol" alt="" src="imagenes/mas.png">
+        <button id="btnNewNote" class="buttonNewNote" type="button" name="button"> Crear nueva nota ...</button>
+      </div>
+      <section id="notes">
+      </section>
+    </main>
+    <footer></footer>
+    <script type="text/javascript" src="cipher.js"></script>
+    <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
