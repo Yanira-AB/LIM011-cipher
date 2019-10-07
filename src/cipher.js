@@ -4,7 +4,7 @@
 
 const arrayNotes = [];
 
-const encode = (offset, string, title) => {
+const encode = (offset, string) => {
   console.log(arrayNotes);
   console.log(title);
   let numAlphabet;

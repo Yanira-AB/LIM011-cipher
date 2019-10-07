@@ -34,7 +34,7 @@ const encryptNote = () => {
   const textNote = document.getElementById('textNote'+count);
   const keyNote = document.getElementById('key'+count);
   arrayNotes.push([title.value, textNote.value, parseInt(keyNote.value)]);
-  const stringEncrypt = encode(keyNote.value, textNote.value, title.value);
+  const stringEncrypt = encode(keyNote.value, textNote.value);
   textNote.value = stringEncrypt;
   textNote.setAttribute('rows', '2');
   title.classList.add('frozenNote');
