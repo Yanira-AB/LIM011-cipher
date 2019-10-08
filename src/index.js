@@ -1,3 +1,4 @@
+const arrayNotes = [];
 const btnNewNote = document.getElementById('btnNewNote');
 const notes = document.getElementById('notes');
 let count = 0;
@@ -24,65 +25,68 @@ const startNote = () => {
   '</section>';
   notes.appendChild(note);
   const btnEncryptDone = document.getElementById('btnEncryptDone'+count);
-  btnEncryptDone.addEventListener('click', encryptNote);
+  const countActually = count;
+  btnEncryptDone.addEventListener('click', function(){encryptNote(countActually)});
+  const btnDecipher = document.getElementById('desencriptar'+countActually);
+  btnDecipher.addEventListener('click', function(){showNote(countActually)});
+  const decodeBtn = document.getElementById('decodeBtn'+countActually);
+  decodeBtn.addEventListener('click', function(){decodeDone(countActually)});
+  const btnEncodeTwo = document.getElementById('encodeBtnTwo'+countActually);
+  btnEncodeTwo.addEventListener('click', function(){encryptSave(countActually)});
 };
 
-const encryptNote = () => {
-  const btnDecipher = document.getElementById('desencriptar'+count);
+const encryptNote = (countActually) => {
+  const btnDecipher = document.getElementById('desencriptar'+countActually);
   btnDecipher.classList.remove('hide');
-  const title = document.getElementById('textTitle'+count);
-  const textNote = document.getElementById('textNote'+count);
-  const keyNote = document.getElementById('key'+count);
+  const title = document.getElementById('textTitle'+countActually);
+  const textNote = document.getElementById('textNote'+countActually);
+  const keyNote = document.getElementById('key'+countActually);
   arrayNotes.push([title.value, textNote.value, parseInt(keyNote.value)]);
-  const stringEncrypt = encode(keyNote.value, textNote.value);
+  const stringEncrypt = window.cipher.encode(keyNote.value, textNote.value);
   textNote.value = stringEncrypt;
   textNote.setAttribute('rows', '2');
   title.classList.add('frozenNote');
   textNote.classList.add('frozenNote');
-  const sectionKey = document.getElementById('sectionKey'+count);
+  const sectionKey = document.getElementById('sectionKey'+countActually);
   sectionKey.classList.add('hide');
   title.disabled = true;
   textNote.disabled = true;
   keyNote.value = '';
-  btnDecipher.addEventListener('click', showNote);
 }
 
-const showNote = () => {
-  const inputKeyNote = document.getElementById('inputKeyNote'+count);
+const showNote = (countActually) => {
+  const inputKeyNote = document.getElementById('inputKeyNote'+countActually);
   inputKeyNote.classList.remove('hide');
-  const btnDecodeOne = document.getElementById('desencriptar'+count);
+  const btnDecodeOne = document.getElementById('desencriptar'+countActually);
   btnDecodeOne.classList.add('hide');
-  const formNote = document.getElementById('note'+count);
-  const decodeBtn = document.getElementById('decodeBtn'+count);
+  const decodeBtn = document.getElementById('decodeBtn'+countActually);
   decodeBtn.classList.remove('hide');
-  decodeBtn.addEventListener('click', decodeDone);
 }
 
-const decodeDone = () => {
-  const textNote = document.getElementById('textNote'+count);
-  let keyShow = document.getElementById('keyShow'+count);
-  const msjShow = decode(parseInt(keyShow.value), textNote.value);
+const decodeDone = (countActually) => {
+  const textNote = document.getElementById('textNote'+countActually);
+  let keyShow = document.getElementById('keyShow'+countActually);
+  const msjShow = window.cipher.decode(parseInt(keyShow.value), textNote.value);
   textNote.value = msjShow;
-  const inputKeyNote = document.getElementById('inputKeyNote'+count);
+  const inputKeyNote = document.getElementById('inputKeyNote'+countActually);
   inputKeyNote.classList.add('hide');
-  const decodeBtn = document.getElementById('decodeBtn'+count);
+  const decodeBtn = document.getElementById('decodeBtn'+countActually);
   decodeBtn.classList.add('hide');
-  const btnEncodeTwo = document.getElementById('encodeBtnTwo'+count);
+  const btnEncodeTwo = document.getElementById('encodeBtnTwo'+countActually);
   btnEncodeTwo.classList.remove('hide');
-  btnEncodeTwo.addEventListener('click', encryptSave);
   keyShow.value = '';
 }
 
-const encryptSave = () => {
-  const title = document.getElementById('textTitle'+count);
-  const textNote = document.getElementById('textNote'+count);
+const encryptSave = (countActually) => {
+  const title = document.getElementById('textTitle'+countActually);
+  const textNote = document.getElementById('textNote'+countActually);
   title.classList.remove('frozenNote');
   textNote.classList.remove('frozenNote');
   title.disabled = false;
   textNote.disabled = false;
-  const btnEncodeTwo = document.getElementById('encodeBtnTwo'+count);
+  const btnEncodeTwo = document.getElementById('encodeBtnTwo'+countActually);
   btnEncodeTwo.classList.add('hide')
-  const sectionKey = document.getElementById('sectionKey'+count);
+  const sectionKey = document.getElementById('sectionKey'+countActually);
   sectionKey.classList.remove('hide');
 }
 
