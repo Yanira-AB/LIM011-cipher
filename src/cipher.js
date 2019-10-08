@@ -7,9 +7,16 @@ window.cipher = {
       const numAscii = string.charCodeAt(i);
       if (numAscii === 32) {
         arrayEncrypt.push(' ');
-      } else {
-        numAlphabet = ((numAscii - 32 + parseInt(offset)) % 223) + 32;
+      } else if (numAscii >= 65 && numAscii<= 90) {
+        numAlphabet = ((numAscii - 65 + parseInt(offset)) % 26) + 65;
         const caracterEncrypt = String.fromCharCode(numAlphabet);
+        arrayEncrypt.push(caracterEncrypt);
+      } else if (numAscii >= 97 && numAscii<= 122) {
+        numAlphabet = ((numAscii - 97 + parseInt(offset)) % 26) + 97;
+        const caracterEncrypt = String.fromCharCode(numAlphabet);
+        arrayEncrypt.push(caracterEncrypt);
+      } else {
+        const caracterEncrypt = String.fromCharCode(numAscii);
         arrayEncrypt.push(caracterEncrypt);
       }
     }
@@ -25,9 +32,16 @@ window.cipher = {
       const numAscii = string.charCodeAt(i);
       if (numAscii === 32) {
         arrayDesEncrypt.push(' ');
-      } else {
-        numAlphabet = ((numAscii - 255 - parseInt(offset)) % 223) + 255;
+      } else if (numAscii >= 65 && numAscii<= 90) {
+        numAlphabet = ((numAscii - 90 - parseInt(offset)) % 26) + 90;
         const caracterDesencrypt = String.fromCharCode(numAlphabet);
+        arrayDesEncrypt.push(caracterDesencrypt);
+      } else if (numAscii >= 97 && numAscii<= 122) {
+        numAlphabet = ((numAscii - 122 - parseInt(offset)) % 26) + 122;
+        const caracterDesencrypt = String.fromCharCode(numAlphabet);
+        arrayDesEncrypt.push(caracterDesencrypt);
+      } else {
+        const caracterDesencrypt = String.fromCharCode(numAscii);
         arrayDesEncrypt.push(caracterDesencrypt);
       }
     }

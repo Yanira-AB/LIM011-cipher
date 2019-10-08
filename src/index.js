@@ -15,7 +15,7 @@ const startNote = () => {
     '<span>Clave :</span><input id="keyShow'+count+'" class="keyInput" type="text" name="" value="">'+
   '</div>'+
   '<button id="decodeBtn'+count+'" class="buttonFunction hide" type="button" name="button">Desencriptar</button>'+
-  '<button id="encodeBtnTwo'+count+'" class="buttonFunction hide" type="button" name="button">Encriptar</button>'+
+  '<button id="encodeBtnTwo'+count+'" class="buttonFunction hide" type="button" name="button">Editar y Encriptar</button>'+
   '<section id="sectionKey'+count+'">'+
     '<div class="textFunction">'+
       '<p>* Escoge un número de 2 dígitos como clave única para ésta nota.</p>'+
@@ -36,22 +36,36 @@ const startNote = () => {
 };
 
 const encryptNote = (countActually) => {
-  const btnDecipher = document.getElementById('desencriptar'+countActually);
-  btnDecipher.classList.remove('hide');
   const title = document.getElementById('textTitle'+countActually);
   const textNote = document.getElementById('textNote'+countActually);
   const keyNote = document.getElementById('key'+countActually);
-  arrayNotes.push([title.value, textNote.value, parseInt(keyNote.value)]);
-  const stringEncrypt = window.cipher.encode(keyNote.value, textNote.value);
-  textNote.value = stringEncrypt;
-  textNote.setAttribute('rows', '2');
-  title.classList.add('frozenNote');
-  textNote.classList.add('frozenNote');
-  const sectionKey = document.getElementById('sectionKey'+countActually);
-  sectionKey.classList.add('hide');
-  title.disabled = true;
-  textNote.disabled = true;
-  keyNote.value = '';
+  if (isNaN(keyNote.value) || keyNote.value.length === 0 || keyNote.value.split(' ').length-1 === keyNote.value.length) {
+    alert('La clave debe ser compuesta sólo por números');
+    keyNote.value = '';
+  } else if (parseInt(keyNote.value) < 0) {
+    alert('Sólo números positivos');
+    keyNote.value = '';
+  } else if (textNote.value.length === 0 || textNote.value.split(' ').length-1 === textNote.value.length) {
+    alert('La nota está vacia');
+    textNote.value = '';
+  } else {
+    if (title.value.length === 0 || title.value.split(' ').length-1 === title.value.length) {
+      title.value = 'Nota '+countActually;
+    } 
+    const btnDecipher = document.getElementById('desencriptar'+countActually);
+    btnDecipher.classList.remove('hide');
+    arrayNotes.push([title.value, textNote.value, parseInt(keyNote.value)]);
+    const stringEncrypt = window.cipher.encode(keyNote.value, textNote.value);
+    textNote.value = stringEncrypt;
+    textNote.setAttribute('rows', '2');
+    title.classList.add('frozenNote');
+    textNote.classList.add('frozenNote');
+    const sectionKey = document.getElementById('sectionKey'+countActually);
+    sectionKey.classList.add('hide');
+    title.disabled = true;
+    textNote.disabled = true;
+    keyNote.value = '';
+  }
 }
 
 const showNote = (countActually) => {
@@ -66,15 +80,25 @@ const showNote = (countActually) => {
 const decodeDone = (countActually) => {
   const textNote = document.getElementById('textNote'+countActually);
   let keyShow = document.getElementById('keyShow'+countActually);
-  const msjShow = window.cipher.decode(parseInt(keyShow.value), textNote.value);
-  textNote.value = msjShow;
-  const inputKeyNote = document.getElementById('inputKeyNote'+countActually);
-  inputKeyNote.classList.add('hide');
-  const decodeBtn = document.getElementById('decodeBtn'+countActually);
-  decodeBtn.classList.add('hide');
-  const btnEncodeTwo = document.getElementById('encodeBtnTwo'+countActually);
-  btnEncodeTwo.classList.remove('hide');
-  keyShow.value = '';
+  if (isNaN(keyShow.value) || keyShow.value.length === 0 || keyShow.value.split(' ').length-1 === keyShow.value.length) {
+    alert('La clave debe ser compuesta por números');
+    keyShow.value = '';
+  } else if (parseInt(keyShow.value) < 0) {
+    alert('Sólo números positivos');
+    keyShow.value = '';
+  } else if (textNote.value.length === 0 || textNote.value.split(' ').length-1 === textNote.value.length) {
+    alert('La nota está vacia');
+  } else {
+    const msjShow = window.cipher.decode(parseInt(keyShow.value), textNote.value);
+    textNote.value = msjShow;
+    const inputKeyNote = document.getElementById('inputKeyNote'+countActually);
+    inputKeyNote.classList.add('hide');
+    const decodeBtn = document.getElementById('decodeBtn'+countActually);
+    decodeBtn.classList.add('hide');
+    const btnEncodeTwo = document.getElementById('encodeBtnTwo'+countActually);
+    btnEncodeTwo.classList.remove('hide');
+    keyShow.value = '';
+  }
 }
 
 const encryptSave = (countActually) => {

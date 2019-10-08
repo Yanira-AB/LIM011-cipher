@@ -86,11 +86,10 @@ body {
 .buttonFunction {
   border-color: white;
   background-color: green;
-  width: 100px;
   border-radius: 8px;
   color: white;
-  height: 28px;
   font-size: 14px;
+  padding: 10px 15px;
 }
 
 .textFunction {
