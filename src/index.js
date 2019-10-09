@@ -154,12 +154,14 @@ const deleteNote = (countActually) => {
 const deleteNoteDone = (countActually) => {
   const form = document.getElementById('note'+countActually);
   const section = document.getElementById('notes');
-  section.removeChild(form);
-  const keyShow = document.getElementById('keyShow'+countActually);
+  let keyShow = document.getElementById('keyShow'+countActually);
   for (var i = 1; i < arrayNotes.length; i++) {
-    if (arrayNotes[i][0] === 'Nota'+countActually) {
+    if (arrayNotes[i][0] === undefined ) {
+      continue;
+    } else if (arrayNotes[i][0] === 'Nota'+countActually) {
       if (arrayNotes[i][3] === parseInt(keyShow.value)) {
         arrayNotes.splice(i,1);
+        section.removeChild(form);
         console.log(arrayNotes);
       } else {
         alert('Contraseña Incorrecta');
