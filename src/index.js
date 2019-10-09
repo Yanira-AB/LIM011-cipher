@@ -1,4 +1,4 @@
-const arrayNotes = [];
+let arrayNotes = [];
 const btnNewNote = document.getElementById('btnNewNote');
 const notes = document.getElementById('notes');
 let count = 0;
@@ -8,12 +8,14 @@ const startNote = () => {
   const note = document.createElement('form');
   note.setAttribute('id', 'note'+ count);
   note.setAttribute('class', 'newNote');
-  note.innerHTML = '<textarea value="Hola" id="textTitle'+ count+'" placeholder="Título" class="titleNote" name="name" rows="1" cols="80"></textarea>' +
+  note.innerHTML = '<button id="btnDelete'+count+'" class="buttonFunction hide" type="button" name="button">Eliminar</button>'+
+  '<textarea value="Hola" id="textTitle'+ count+'" placeholder="Título" class="titleNote" name="name" rows="1" cols="80"></textarea>' +
   '<textarea id="textNote'+ count+'" placeholder="Escribe aquí..." class="textNote" rows="8" name="name" rows="8" cols="80"></textarea>'+
   '<button id="desencriptar'+count+'" class="buttonFunction hide" type="button" name="button">Desencriptar</button>'+
   '<div id="inputKeyNote'+count+'" class="textFunction hide">'+
     '<span>Clave :</span><input id="keyShow'+count+'" class="keyInput" type="text" name="" value="">'+
   '</div>'+
+  '<button id="deleteDone'+count+'" class="buttonFunction hide" type="button" name="button">Eliminar</button>'+
   '<button id="decodeBtn'+count+'" class="buttonFunction hide" type="button" name="button">Desencriptar</button>'+
   '<button id="encodeBtnTwo'+count+'" class="buttonFunction hide" type="button" name="button">Editar y Encriptar</button>'+
   '<section id="sectionKey'+count+'">'+
@@ -24,8 +26,12 @@ const startNote = () => {
     '<button id="btnEncryptDone'+count+'" class="buttonFunction" type="button" name="button">Encriptar</button>'+
   '</section>';
   notes.appendChild(note);
-  const btnEncryptDone = document.getElementById('btnEncryptDone'+count);
   const countActually = count;
+  const deleteDone = document.getElementById('deleteDone'+countActually);
+  deleteDone.addEventListener('click', function(){deleteNoteDone(countActually)});
+  const btnDelete = document.getElementById('btnDelete'+countActually);
+  btnDelete.addEventListener('click', function(){deleteNote(countActually)});
+  const btnEncryptDone = document.getElementById('btnEncryptDone'+countActually);
   btnEncryptDone.addEventListener('click', function(){encryptNote(countActually)});
   const btnDecipher = document.getElementById('desencriptar'+countActually);
   btnDecipher.addEventListener('click', function(){showNote(countActually)});
@@ -52,6 +58,8 @@ const encryptNote = (countActually) => {
     if (title.value.length === 0 || title.value.split(' ').length-1 === title.value.length) {
       title.value = 'Nota '+countActually;
     }
+    const btnDelete = document.getElementById('btnDelete'+countActually);
+    btnDelete.classList.remove('hide');
     const btnDecipher = document.getElementById('desencriptar'+countActually);
     btnDecipher.classList.remove('hide');
     arrayNotes[countActually] = ['Nota'+countActually, title.value, textNote.value, parseInt(keyNote.value)];
@@ -122,6 +130,32 @@ const encryptSave = (countActually) => {
   btnEncodeTwo.classList.add('hide')
   const sectionKey = document.getElementById('sectionKey'+countActually);
   sectionKey.classList.remove('hide');
+}
+
+const deleteNote = (countActually) => {
+  const inputKeyNote = document.getElementById('inputKeyNote'+countActually);
+  inputKeyNote.classList.remove('hide');
+  const deleteDone = document.getElementById('deleteDone'+countActually);
+  deleteDone.classList.remove('hide');
+  const btnDelete = document.getElementById('btnDelete'+countActually);
+  btnDelete.classList.add('hide');
+  const btnDecipher = document.getElementById('desencriptar'+countActually);
+  btnDecipher.classList.add('hide');
+}
+
+const deleteNoteDone = (countActually) => {
+  let keyShow = document.getElementById('keyShow'+countActually);
+  for (var i = 1; i < arrayNotes.length; i++) {
+    if (arrayNotes[i][0] === 'Nota'+countActually) {
+      if (arrayNotes[i][3] === parseInt(keyShow.value)) {
+        arrayNotes.splice(countActually,1);
+        console.log(arrayNotes);
+      } else {
+        alert('Contraseña Incorrecta');
+        keyShow.value = '';
+      }
+    }
+  }
 }
 
 btnNewNote.addEventListener('click', startNote);
