@@ -1,5 +1,5 @@
 window.cipher = {
-  encode : function (offset, string) {
+  encode : (offset, string) => {
     let numAlphabet;
     let arrayEncrypt = [];
 
@@ -24,7 +24,7 @@ window.cipher = {
     return stringEncrypt;
   },
 
-  decode : function (offset, string) {
+  decode : (offset, string) => {
     let numAlphabet;
     let arrayDesEncrypt = [];
 

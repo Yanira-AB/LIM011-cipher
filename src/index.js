@@ -8,7 +8,7 @@ const startNote = () => {
   const note = document.createElement('form');
   note.setAttribute('id', 'note'+ count);
   note.setAttribute('class', 'newNote');
-  note.innerHTML = '<button id="btnDelete'+count+'" class="buttonFunction hide" type="button" name="button">Eliminar</button>'+
+  note.innerHTML = '<button id="btnDelete'+count+'" class="btnDelete hide" type="button" name="button">x</button>'+
   '<textarea value="Hola" id="textTitle'+ count+'" placeholder="Título" class="titleNote" name="name" rows="1" cols="80"></textarea>' +
   '<textarea id="textNote'+ count+'" placeholder="Escribe aquí..." class="textNote" rows="8" name="name" rows="8" cols="80"></textarea>'+
   '<button id="desencriptar'+count+'" class="buttonFunction hide" type="button" name="button">Desencriptar</button>'+
@@ -42,6 +42,9 @@ const startNote = () => {
 };
 
 const encryptNote = (countActually) => {
+  const form = document.getElementById('note'+countActually);
+  form.classList.remove('newNote');
+  form.classList.add('formNote');
   const title = document.getElementById('textTitle'+countActually);
   const textNote = document.getElementById('textNote'+countActually);
   const keyNote = document.getElementById('key'+countActually);
@@ -67,8 +70,8 @@ const encryptNote = (countActually) => {
     const stringEncrypt = window.cipher.encode(keyNote.value, textNote.value);
     textNote.value = stringEncrypt;
     textNote.setAttribute('rows', '2');
-    title.classList.add('frozenNote');
-    textNote.classList.add('frozenNote');
+    title.classList.add('frozenNoteTitle');
+    textNote.classList.add('frozenNoteText');
     const sectionKey = document.getElementById('sectionKey'+countActually);
     sectionKey.classList.add('hide');
     title.disabled = true;
@@ -122,8 +125,8 @@ const decodeDone = (countActually) => {
 const encryptSave = (countActually) => {
   const title = document.getElementById('textTitle'+countActually);
   const textNote = document.getElementById('textNote'+countActually);
-  title.classList.remove('frozenNote');
-  textNote.classList.remove('frozenNote');
+  title.classList.remove('frozenNoteTitle');
+  textNote.classList.remove('frozenNoteText');
   title.disabled = false;
   textNote.disabled = false;
   const btnEncodeTwo = document.getElementById('encodeBtnTwo'+countActually);
@@ -133,6 +136,11 @@ const encryptSave = (countActually) => {
 }
 
 const deleteNote = (countActually) => {
+  const form = document.getElementById('note'+countActually);
+  form.classList.remove('formNote');
+  form.classList.add('newNote');
+  const encodeBtnTwo = document.getElementById('encodeBtnTwo'+countActually);
+  encodeBtnTwo.classList.add('hide');
   const inputKeyNote = document.getElementById('inputKeyNote'+countActually);
   inputKeyNote.classList.remove('hide');
   const deleteDone = document.getElementById('deleteDone'+countActually);
@@ -144,11 +152,14 @@ const deleteNote = (countActually) => {
 }
 
 const deleteNoteDone = (countActually) => {
-  let keyShow = document.getElementById('keyShow'+countActually);
+  const form = document.getElementById('note'+countActually);
+  const section = document.getElementById('notes');
+  section.removeChild(form);
+  const keyShow = document.getElementById('keyShow'+countActually);
   for (var i = 1; i < arrayNotes.length; i++) {
     if (arrayNotes[i][0] === 'Nota'+countActually) {
       if (arrayNotes[i][3] === parseInt(keyShow.value)) {
-        arrayNotes.splice(countActually,1);
+        arrayNotes.splice(i,1);
         console.log(arrayNotes);
       } else {
         alert('Contraseña Incorrecta');

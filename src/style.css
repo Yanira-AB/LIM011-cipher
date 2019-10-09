@@ -61,6 +61,21 @@ body {
   margin-bottom: 10px;
 }
 
+.formNote {
+  text-align: center;
+  background-color: #e7e874;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 0px;
+  width: 270px;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .note {
   text-align: center;
   background-color: #e7e874;
@@ -112,7 +127,35 @@ body {
   display: none;
 }
 
-.frozenNote {
-  background-color: #e7e874;
+.frozenNoteTitle {
+  background-color: #feffab;
   border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.frozenNoteText {
+  background-color: #feffab;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-weight: lighter;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.btnDelete {
+  background-color: green;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  height: 25px;
+  width: 25px;
+  margin-top: 12px;
+  margin-left: 251px;
+  margin-bottom: 15px;
+  padding-right: 5px;
 }
