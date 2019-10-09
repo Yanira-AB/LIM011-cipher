@@ -17,7 +17,7 @@ const startNote = () => {
   '<button id="decodeBtn'+count+'" class="buttonFunction hide" type="button" name="button">Desencriptar</button>'+
   '<button id="encodeBtnTwo'+count+'" class="buttonFunction hide" type="button" name="button">Editar y Encriptar</button>'+
   '<section id="sectionKey'+count+'">'+
-    '<div class="textFunction">'+
+    '<div id="divKey'+count+'" class="textFunction">'+
       '<p>* Escoge un número de 2 dígitos como clave única para ésta nota.</p>'+
       '<span>Clave :</span><input id="key'+count+'" class="keyInput" type="text" name="" value="">'+
     '</div>'+
@@ -51,10 +51,11 @@ const encryptNote = (countActually) => {
   } else {
     if (title.value.length === 0 || title.value.split(' ').length-1 === title.value.length) {
       title.value = 'Nota '+countActually;
-    } 
+    }
     const btnDecipher = document.getElementById('desencriptar'+countActually);
     btnDecipher.classList.remove('hide');
-    arrayNotes.push([title.value, textNote.value, parseInt(keyNote.value)]);
+    arrayNotes[countActually] = ['Nota'+countActually, title.value, textNote.value, parseInt(keyNote.value)];
+    console.log(arrayNotes);
     const stringEncrypt = window.cipher.encode(keyNote.value, textNote.value);
     textNote.value = stringEncrypt;
     textNote.setAttribute('rows', '2');
@@ -88,16 +89,25 @@ const decodeDone = (countActually) => {
     keyShow.value = '';
   } else if (textNote.value.length === 0 || textNote.value.split(' ').length-1 === textNote.value.length) {
     alert('La nota está vacia');
-  } else {
-    const msjShow = window.cipher.decode(parseInt(keyShow.value), textNote.value);
-    textNote.value = msjShow;
-    const inputKeyNote = document.getElementById('inputKeyNote'+countActually);
-    inputKeyNote.classList.add('hide');
-    const decodeBtn = document.getElementById('decodeBtn'+countActually);
-    decodeBtn.classList.add('hide');
-    const btnEncodeTwo = document.getElementById('encodeBtnTwo'+countActually);
-    btnEncodeTwo.classList.remove('hide');
-    keyShow.value = '';
+  } else if (arrayNotes.length !== 0) {
+    for (var i = 1; i < arrayNotes.length; i++) {
+      if (arrayNotes[i][0] === 'Nota'+countActually) {
+        if (arrayNotes[i][3] === parseInt(keyShow.value)) {
+          const msjShow = window.cipher.decode(parseInt(keyShow.value), textNote.value);
+          textNote.value = msjShow;
+          const inputKeyNote = document.getElementById('inputKeyNote'+countActually);
+          inputKeyNote.classList.add('hide');
+          const decodeBtn = document.getElementById('decodeBtn'+countActually);
+          decodeBtn.classList.add('hide');
+          const btnEncodeTwo = document.getElementById('encodeBtnTwo'+countActually);
+          btnEncodeTwo.classList.remove('hide');
+          keyShow.value = '';
+        } else {
+          alert('Contraseña Incorrecta');
+          keyShow.value = '';
+        }
+      }
+    }
   }
 }
 
