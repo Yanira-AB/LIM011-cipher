@@ -159,3 +159,8 @@ body {
   margin-bottom: 15px;
   padding-right: 5px;
 }
+
+.msjError {
+  font-weight: bolder;
+  font-size: 14px;
+}
