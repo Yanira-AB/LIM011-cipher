@@ -22,11 +22,9 @@ window.cipher = {
     const stringEncrypt = arrayEncrypt.join('');
     return stringEncrypt;
   },
-
   decode: (offset, string) => {
     let numAlphabet;
     const arrayDesEncrypt = [];
-
     for (let i = 0; i < string.length; i += 1) {
       const numAscii = string.charCodeAt(i);
       if (numAscii === 32) {

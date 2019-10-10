@@ -2,7 +2,6 @@ const arrayNotes = [];
 const btnNewNote = document.getElementById('btnNewNote');
 const notes = document.getElementById('notes');
 let count = 0;
-
 const encryptNote = (countActually) => {
   const msjError = document.getElementById(`msjError${countActually}`);
   const form = document.getElementById(`note${countActually}`);
@@ -44,7 +43,6 @@ const encryptNote = (countActually) => {
     keyNote.value = '';
   }
 };
-
 const showNote = (countActually) => {
   const inputKeyNote = document.getElementById(`inputKeyNote${countActually}`);
   inputKeyNote.classList.remove('hide');
@@ -53,7 +51,6 @@ const showNote = (countActually) => {
   const decodeBtn = document.getElementById(`decodeBtn${countActually}`);
   decodeBtn.classList.remove('hide');
 };
-
 const decodeDone = (countActually) => {
   const msjError = document.getElementById(`msjError${countActually}`);
   const textNote = document.getElementById(`textNote${countActually}`);
@@ -93,7 +90,6 @@ const decodeDone = (countActually) => {
     }
   }
 };
-
 const encryptSave = (countActually) => {
   const title = document.getElementById(`textTitle${countActually}`);
   const textNote = document.getElementById(`textNote${countActually}`);
@@ -106,7 +102,6 @@ const encryptSave = (countActually) => {
   const sectionKey = document.getElementById(`sectionKey${countActually}`);
   sectionKey.classList.remove('hide');
 };
-
 const deleteNote = (countActually) => {
   const form = document.getElementById(`note${countActually}`);
   form.classList.remove('formNote');
@@ -122,7 +117,6 @@ const deleteNote = (countActually) => {
   const btnDecipher = document.getElementById(`desencriptar${countActually}`);
   btnDecipher.classList.add('hide');
 };
-
 const deleteNoteDone = (countActually) => {
   const msjError = document.getElementById(`msjError${countActually}`);
   const form = document.getElementById(`note${countActually}`);
@@ -141,7 +135,6 @@ const deleteNoteDone = (countActually) => {
     }
   }
 };
-
 const startNote = () => {
   count += 1;
   const note = document.createElement('form');
@@ -167,7 +160,6 @@ const startNote = () => {
   </section>`;
   notes.appendChild(note);
   const countActually = count;
-
   const deleteDone = document.getElementById(`deleteDone${countActually}`);
   deleteDone.addEventListener('click', () => { deleteNoteDone(countActually); });
   const btnDelete = document.getElementById(`btnDelete${countActually}`);
@@ -181,5 +173,4 @@ const startNote = () => {
   const btnEncodeTwo = document.getElementById(`encodeBtnTwo${countActually}`);
   btnEncodeTwo.addEventListener('click', () => { encryptSave(countActually); });
 };
-
 btnNewNote.addEventListener('click', startNote);
