@@ -1,17 +1,17 @@
 window.cipher = {
-  encode : (offset, string) => {
+  encode: (offset, string) => {
     let numAlphabet;
-    let arrayEncrypt = [];
+    const arrayEncrypt = [];
 
-    for (var i = 0; i < string.length; i++) {
+    for (let i = 0; i < string.length; i += 1) {
       const numAscii = string.charCodeAt(i);
       if (numAscii === 32) {
         arrayEncrypt.push(' ');
-      } else if (numAscii >= 65 && numAscii<= 90) {
+      } else if (numAscii >= 65 && numAscii <= 90) {
         numAlphabet = ((numAscii - 65 + parseInt(offset)) % 26) + 65;
         const caracterEncrypt = String.fromCharCode(numAlphabet);
         arrayEncrypt.push(caracterEncrypt);
-      } else if (numAscii >= 97 && numAscii<= 122) {
+      } else if (numAscii >= 97 && numAscii <= 122) {
         numAlphabet = ((numAscii - 97 + parseInt(offset)) % 26) + 97;
         const caracterEncrypt = String.fromCharCode(numAlphabet);
         arrayEncrypt.push(caracterEncrypt);
@@ -24,19 +24,19 @@ window.cipher = {
     return stringEncrypt;
   },
 
-  decode : (offset, string) => {
+  decode: (offset, string) => {
     let numAlphabet;
-    let arrayDesEncrypt = [];
+    const arrayDesEncrypt = [];
 
-    for (var i = 0; i < string.length; i++) {
+    for (let i = 0; i < string.length; i += 1) {
       const numAscii = string.charCodeAt(i);
       if (numAscii === 32) {
         arrayDesEncrypt.push(' ');
-      } else if (numAscii >= 65 && numAscii<= 90) {
+      } else if (numAscii >= 65 && numAscii <= 90) {
         numAlphabet = ((numAscii - 90 - parseInt(offset)) % 26) + 90;
         const caracterDesencrypt = String.fromCharCode(numAlphabet);
         arrayDesEncrypt.push(caracterDesencrypt);
-      } else if (numAscii >= 97 && numAscii<= 122) {
+      } else if (numAscii >= 97 && numAscii <= 122) {
         numAlphabet = ((numAscii - 122 - parseInt(offset)) % 26) + 122;
         const caracterDesencrypt = String.fromCharCode(numAlphabet);
         arrayDesEncrypt.push(caracterDesencrypt);
@@ -47,5 +47,5 @@ window.cipher = {
     }
     const stringDesencrypt = arrayDesEncrypt.join('');
     return stringDesencrypt;
-  }
+  },
 };
