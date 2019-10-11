@@ -1,5 +1,6 @@
 # Secret Note
 
+
 **Secret Note** es un block de notas diferente, pues te ofrece guardar tus notas de manera segura.
 Cada nota que crees tendrá una clave numérica única que le asignarás al momento de crearla.
 
@@ -16,6 +17,7 @@ cambiar tu clave).
 
 Para eliminar la nota también te solicitará la clave numérica (ofsset).
 
+
 **La interfaz permite al usuario:**
 
 * Crear varias notas.
@@ -28,17 +30,21 @@ Para eliminar la nota también te solicitará la clave numérica (ofsset).
 * Editar la nota.
 * Eliminar la nota.
 
+
 ![Secret Note](/images/secret-note.png "Secret Note")
 
- > **#### INVESTIGACIÓN UX:**
+
+  ### INVESTIGACIÓN UX:
 
   * Usuarios.
+  
      Los usuarios de éste producto son todas aquellas personas que suelen olvidar datos
      importantes, como por ejemplo: claves, contraseñas, correos, etc.
      También personas que anotan sus pensamientos o su día a día.
      Público en general.
      
   * Solución.
+  
      Con éste producto podrán guardar todos esos datos importantes de manera segura y discreta _(con una clave)_
      sin necesidad de tener que descargar algún bloqueador de aplicaciones.
      
