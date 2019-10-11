@@ -28,28 +28,28 @@ Para eliminar la nota también te solicitará la clave numérica (ofsset).
 
 ![Secret Note](/images/secret-note.png "Secret Note")
 
-* Investigación UX:
+** Investigación UX:**
 
-  1. Usuarios.
+  **1. Usuarios.**
      Los usuarios de éste producto son todas aquellas personas que suelen olvidar datos
      importantes, como por ejemplo: claves, contraseñas, correos, etc.
      También personas que anotan sus pensamientos o su día a día.
      Público en general.
      
-  2. Solución.
+  **2. Solución.**
      Con éste producto podrán guardar todos esos datos importantes de manera segura y discreta _(con una clave)_
      sin necesidad de tener que descargar algún bloqueador de aplicaciones.
      
-  3. Prototipo en papel.
+  **3. Prototipo en papel.**
      
      ![Secret Note](/images/prototipo-papel.png "Primer prototipo en papel")
      
-  4. Primer Feedback recibido.
+  **4. Primer Feedback recibido.**
   
      Agregar la opción de eliminar cada nota de manera independiente.
      Pedir el número como "clave" en vez de offset.
 
-  5. Prototipo final en Figma.
+  **5. Prototipo final en Figma.**
      
      ![Secret Note](/images/figma.png "Prototipo en Figma")
      
