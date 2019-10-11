@@ -1,4 +1,5 @@
 const arrayNotes = [];
+let countNoteNum = 0;
 const btnNewNote = document.getElementById('btnNewNote');
 const notes = document.getElementById('notes');
 let count = -1;
@@ -21,7 +22,7 @@ const encryptNote = (countActually) => {
     textNote.value = '';
   } else {
     if (title.value.length === 0 || title.value.split(' ').length - 1 === title.value.length) {
-      title.value = `Nota${countActually}`;
+      title.value = `Nota ${countNoteNum}`;
     }
     const btnDelete = document.getElementById(`btnDelete${countActually}`);
     btnDelete.classList.remove('hide');
@@ -151,6 +152,7 @@ const deleteNoteDone = (countActually) => {
 };
 const startNote = () => {
   count += 1;
+  countNoteNum += 1;
   const note = document.createElement('form');
   note.setAttribute('id', `note${count}`);
   note.setAttribute('class', 'formNote');
@@ -159,7 +161,7 @@ const startNote = () => {
   <textarea id="textNote${count}" placeholder="Escribe aquí..." class="textNote" rows="8" name="name" rows="8" cols="80"></textarea>
   <button id="desencriptar${count}" class="buttonFunction hide" type="button" name="button">Desencriptar</button>
   <div id="inputKeyNote${count}" class="textFunction hide">
-    '<span>Clave :</span><input id="keyShow${count}" class="keyInput" type="text" name="" value="">
+    <span>Clave :</span><input id="keyShow${count}" class="keyInput" type="text" name="" value="">
   </div>
   <p id="msjError${count}" class="msjError hide">Mensaje de error</p>
   <button id="deleteDone${count}" class="buttonFunction hide" type="button" name="button">Eliminar</button>
