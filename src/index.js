@@ -1,12 +1,9 @@
 const arrayNotes = [];
 const btnNewNote = document.getElementById('btnNewNote');
 const notes = document.getElementById('notes');
-let count = 0;
+let count = -1;
 const encryptNote = (countActually) => {
   const msjError = document.getElementById(`msjError${countActually}`);
-  const form = document.getElementById(`note${countActually}`);
-  form.classList.remove('newNote');
-  form.classList.add('formNote');
   const title = document.getElementById(`textTitle${countActually}`);
   const textNote = document.getElementById(`textNote${countActually}`);
   const keyNote = document.getElementById(`key${countActually}`);
@@ -44,6 +41,11 @@ const encryptNote = (countActually) => {
   }
 };
 const showNote = (countActually) => {
+  const form = document.getElementById(`note${countActually}`);
+  form.classList.remove('formNote');
+  form.classList.add('newNote');
+  const btnDelete = document.getElementById(`btnDelete${countActually}`);
+  btnDelete.classList.add('hide');
   const inputKeyNote = document.getElementById(`inputKeyNote${countActually}`);
   inputKeyNote.classList.remove('hide');
   const btnDecodeOne = document.getElementById(`desencriptar${countActually}`);
@@ -52,6 +54,11 @@ const showNote = (countActually) => {
   decodeBtn.classList.remove('hide');
 };
 const decodeDone = (countActually) => {
+  const form = document.getElementById(`note${countActually}`);
+  form.classList.remove('newNote');
+  form.classList.add('formNote');
+  const btnDelete = document.getElementById(`btnDelete${countActually}`);
+  btnDelete.classList.remove('hide');
   const msjError = document.getElementById(`msjError${countActually}`);
   const textNote = document.getElementById(`textNote${countActually}`);
   const keyShow = document.getElementById(`keyShow${countActually}`);
@@ -68,7 +75,7 @@ const decodeDone = (countActually) => {
     msjError.innerHTML = 'La nota está vacia';
     textNote.value = '';
   } else if (arrayNotes.length !== 0) {
-    for (let i = 1; i < arrayNotes.length; i += 1) {
+    for (let i = 0; i < arrayNotes.length; i += 1) {
       if (arrayNotes[i][0] === `Nota${countActually}`) {
         if (arrayNotes[i][3] === parseInt(keyShow.value, 0)) {
           msjError.classList.add('hide');
@@ -91,6 +98,11 @@ const decodeDone = (countActually) => {
   }
 };
 const encryptSave = (countActually) => {
+  const form = document.getElementById(`note${countActually}`);
+  form.classList.remove('formNote');
+  form.classList.add('newNote');
+  const btnDelete = document.getElementById(`btnDelete${countActually}`);
+  btnDelete.classList.add('hide');
   const title = document.getElementById(`textTitle${countActually}`);
   const textNote = document.getElementById(`textNote${countActually}`);
   title.classList.remove('frozenNoteTitle');
@@ -122,11 +134,13 @@ const deleteNoteDone = (countActually) => {
   const form = document.getElementById(`note${countActually}`);
   const section = document.getElementById('notes');
   const keyShow = document.getElementById(`keyShow${countActually}`);
-  for (let i = 1; i < arrayNotes.length; i += 1) {
+  for (let i = 0; i < arrayNotes.length; i += 1) {
     if (arrayNotes[i][0] === `Nota${countActually}`) {
       if (arrayNotes[i][3] === parseInt(keyShow.value, 0)) {
+        msjError.classList.add('hide');
         arrayNotes.splice(i, 1);
         section.removeChild(form);
+        count -= 1;
       } else {
         msjError.classList.remove('hide');
         msjError.innerHTML = 'Contraseña Incorrecta';
@@ -139,7 +153,7 @@ const startNote = () => {
   count += 1;
   const note = document.createElement('form');
   note.setAttribute('id', `note${count}`);
-  note.setAttribute('class', 'newNote');
+  note.setAttribute('class', 'formNote');
   note.innerHTML = `<button id="btnDelete${count}" class="btnDelete" type="button" name="button">x</button>
   <textarea value="Hola" id="textTitle${count}" placeholder="Título" class="titleNote" name="name" rows="1" cols="80"></textarea>
   <textarea id="textNote${count}" placeholder="Escribe aquí..." class="textNote" rows="8" name="name" rows="8" cols="80"></textarea>
