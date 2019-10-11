@@ -42,7 +42,7 @@ Para eliminar la nota también te solicitará la clave numérica (ofsset).
      
   **3. Prototipo en papel.**
      
-     ![Secret Note](/images/prototipo-papel.png "Primer prototipo en papel")
+      ![Secret Note](/images/prototipo-papel.png "Primer prototipo en papel")
      
   **4. Primer Feedback recibido.**
   
