@@ -28,7 +28,7 @@ Para eliminar la nota también te solicitará la clave numérica (ofsset).
 
 ![Secret Note](/images/secret-note.png "Secret Note")
 
- ### Investigación UX:
+ > **INVESTIGACIÓN UX:**
 
   **1. Usuarios.**
      Los usuarios de éste producto son todas aquellas personas que suelen olvidar datos
