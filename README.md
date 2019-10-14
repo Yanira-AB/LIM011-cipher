@@ -103,9 +103,9 @@ Respuestas de acuerdo a éstas tres preguntas:
 
 ### Git y GitHub
 - 1.[SI], 2.[SI], 3.[SI] Comandos de git (add | commit | pull | status | push).
-- 1.[NO], 2.[NO], 3.[NO] Manejo de repositorios de GitHub (clone | fork | gh-pages).
+- 1.[SI], 2.[NO], 3.[NO] Manejo de repositorios de GitHub (clone | fork | gh-pages).
 
 ### Buenas prácticas de desarrollo
 - 1.[SI], 2.[SI], 3.[SI] Uso de identificadores descriptivos (Nomenclatura | Semántica).
-- 1.[SI], 2.[NO], 3.[SI] Uso de linter para seguir buenas prácticas (ESLINT).
+- 1.[SI], 2.[NO], 3.[NO] Uso de linter para seguir buenas prácticas (ESLINT).
      
