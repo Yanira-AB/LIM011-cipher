@@ -66,46 +66,40 @@ Para eliminar la nota también te solicitará la clave numérica (ofsset).
 
 A continuación te presentamos los objetivos de aprendizaje de este proyecto. Reflexiona y luego marca los objetivos que has llegado a **entender** y **aplicar** en tu proyecto.
 
-Respuestas de acuerdo a éstas tres preguntas:
-
-1. Si lo hiciste.
-2. Si lo hiciste entendiendo y lo puedes explicar.
-3. Lo puedes hacer sola en otro proyecto.
-
 ### UX
 
-- 1.[SI], 2.[SI], 3.[SI] Diseñar la aplicación pensando y entendiendo al usuario.
-- 3.[SI], 2.[SI], 3.[SI] Crear prototipos para obtener feedback e iterar.
-- 1.[SI], 2.[NO], 3.[SI] Aplicar los principios de diseño visual (contraste, alineación, jerarquía).
+- [x] Diseñar la aplicación pensando y entendiendo al usuario.
+- [x] Crear prototipos para obtener feedback e iterar.
+- [] Aplicar los principios de diseño visual (contraste, alineación, jerarquía).
 
 ### HTML y CSS
 
-- 1.[SI], 2.[NO], 3.[SI] Uso correcto de HTML semántico.
-- 1.[SI], 2.[SI], 3.[SI] Uso de selectores de CSS.
-- 1.[SI], 2.[SI], 3.[SI] Construir tu aplicación respetando el diseño realizado (maquetación).
+- [x] Uso correcto de HTML semántico.
+- [x] Uso de selectores de CSS.
+- [x] Construir tu aplicación respetando el diseño realizado (maquetación).
 
 ### DOM
 
-- 1.[SI], 2.[SI], 3.[SI] Uso de selectores del DOM.
-- 1.[SI], 2.[SI], 3.[SI] Manejo de eventos del DOM.
-- 1.[SI], 2.[SI], 3.[SI] Manipulación dinámica del DOM.
+- [x] Uso de selectores del DOM.
+- [x] Manejo de eventos del DOM.
+- [x] Manipulación dinámica del DOM.
 
 ### Javascript
 
-- 1.[SI], 2.[SI], 3.[SI] Manipulación de strings.
-- 1.[SI], 2.[SI], 3.[SI] Uso de condicionales (if-else | switch).
-- 1.[SI], 2.[SI], 3.[SI] Uso de bucles (for | do-while).	
-- 1.[SI], 2.[SI], 3.[SI] Uso de funciones (parámetros | argumentos | valor de retorno).
-- 1.[SI], 2.[SI], 3.[SI] Declaración correcta de variables (const & let).
+- [x] Manipulación de strings.
+- [x] Uso de condicionales (if-else | switch).
+- [x] Uso de bucles (for | do-while).	
+- [x] Uso de funciones (parámetros | argumentos | valor de retorno).
+- [x] Declaración correcta de variables (const & let).
 
 ### Testing
-- 1.[SI], 2.[NO], 3.[NO] Testeo de tus funciones.
+- [] Testeo de tus funciones.
 
 ### Git y GitHub
-- 1.[SI], 2.[SI], 3.[SI] Comandos de git (add | commit | pull | status | push).
-- 1.[SI], 2.[NO], 3.[NO] Manejo de repositorios de GitHub (clone | fork | gh-pages).
+- [] Comandos de git (add | commit | pull | status | push).
+- [] Manejo de repositorios de GitHub (clone | fork | gh-pages).
 
 ### Buenas prácticas de desarrollo
-- 1.[SI], 2.[SI], 3.[SI] Uso de identificadores descriptivos (Nomenclatura | Semántica).
-- 1.[SI], 2.[NO], 3.[NO] Uso de linter para seguir buenas prácticas (ESLINT).
-     
+- [x] Uso de identificadores descriptivos (Nomenclatura | Semántica).
+- [x] Uso de linter para seguir buenas prácticas (ESLINT).
+    
