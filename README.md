@@ -70,7 +70,7 @@ A continuación te presentamos los objetivos de aprendizaje de este proyecto. Re
 
 - [x] Diseñar la aplicación pensando y entendiendo al usuario.
 - [x] Crear prototipos para obtener feedback e iterar.
-- [] Aplicar los principios de diseño visual (contraste, alineación, jerarquía).
+- [ ] Aplicar los principios de diseño visual (contraste, alineación, jerarquía).
 
 ### HTML y CSS
 
@@ -93,11 +93,11 @@ A continuación te presentamos los objetivos de aprendizaje de este proyecto. Re
 - [x] Declaración correcta de variables (const & let).
 
 ### Testing
-- [] Testeo de tus funciones.
+- [ ] Testeo de tus funciones.
 
 ### Git y GitHub
-- [] Comandos de git (add | commit | pull | status | push).
-- [] Manejo de repositorios de GitHub (clone | fork | gh-pages).
+- [ ] Comandos de git (add | commit | pull | status | push).
+- [ ] Manejo de repositorios de GitHub (clone | fork | gh-pages).
 
 ### Buenas prácticas de desarrollo
 - [x] Uso de identificadores descriptivos (Nomenclatura | Semántica).
