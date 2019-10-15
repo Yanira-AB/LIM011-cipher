@@ -93,11 +93,11 @@ A continuación te presentamos los objetivos de aprendizaje de este proyecto. Re
 - [x] Declaración correcta de variables (const & let).
 
 ### Testing
-- [ ] Testeo de tus funciones.
+- [x] Testeo de tus funciones.
 
 ### Git y GitHub
-- [ ] Comandos de git (add | commit | pull | status | push).
-- [ ] Manejo de repositorios de GitHub (clone | fork | gh-pages).
+- [x] Comandos de git (add | commit | pull | status | push).
+- [x] Manejo de repositorios de GitHub (clone | fork | gh-pages).
 
 ### Buenas prácticas de desarrollo
 - [x] Uso de identificadores descriptivos (Nomenclatura | Semántica).
