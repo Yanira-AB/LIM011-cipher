@@ -169,8 +169,8 @@ const startNote = () => {
   <button id="encodeBtnTwo${count}" class="buttonFunction hide" type="button" name="button">Editar y Encriptar</button>
   <section id="sectionKey${count}">
     <div id="divKey${count}" class="textFunction">
-      <p>* Escoge tu clave numérica para ésta nota.</p>
-      <span>Clave :</span><input id="key${count}" class="keyInput" type="text" name="" value="">
+      <p class="textSmall">* Escoge tu clave numérica para ésta nota.</p>
+      <span class="textSmall">Clave :</span><input id="key${count}" class="keyInput" type="text" name="" value="">
     </div>
     <button id="btnEncryptDone${count}" class="buttonFunction" type="button" name="button">Encriptar</button>
   </section>`;
