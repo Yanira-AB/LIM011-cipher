@@ -155,10 +155,15 @@ const deleteNoteDone = (countActually) => {
 const deleteNoteRed = (countActually) => {
   const form = document.getElementById(`note${countActually}`);
   const section = document.getElementById('notes');
-  for (let i = 0; i < arrayNotes.length; i += 1) {
-    if (arrayNotes[i][0] === `Nota${countActually}`) {
-      section.removeChild(form);
-      count -= 1;
+  if (arrayNotes.length === 0) {
+    section.removeChild(form);
+    count -= 1;
+  } else {
+    for (let i = 0; i < arrayNotes.length; i += 1) {
+      if (arrayNotes[i][0] === `Nota${countActually}`) {
+        section.removeChild(form);
+        count -= 1;
+      }
     }
   }
 };
