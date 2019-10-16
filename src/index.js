@@ -24,6 +24,8 @@ const encryptNote = (countActually) => {
     if (title.value.length === 0 || title.value.split(' ').length - 1 === title.value.length) {
       title.value = `Nota ${countNoteNum}`;
     }
+    const btnDeleteRed = document.getElementById(`btnDeleteRed${countActually}`);
+    btnDeleteRed.classList.add('hide');
     const btnDelete = document.getElementById(`btnDelete${countActually}`);
     btnDelete.classList.remove('hide');
     const btnDecipher = document.getElementById(`desencriptar${countActually}`);
@@ -150,13 +152,24 @@ const deleteNoteDone = (countActually) => {
     }
   }
 };
+const deleteNoteRed = (countActually) => {
+  const form = document.getElementById(`note${countActually}`);
+  const section = document.getElementById('notes');
+  for (let i = 0; i < arrayNotes.length; i += 1) {
+    if (arrayNotes[i][0] === `Nota${countActually}`) {
+      section.removeChild(form);
+      count -= 1;
+    }
+  }
+};
 const startNote = () => {
   count += 1;
   countNoteNum += 1;
   const note = document.createElement('form');
   note.setAttribute('id', `note${count}`);
   note.setAttribute('class', 'formNote');
-  note.innerHTML = `<button id="btnDelete${count}" class="btnDelete" type="button" name="button">x</button>
+  note.innerHTML = `<button id="btnDelete${count}" class="btnDelete hide" type="button" name="button">x</button>
+  <button id="btnDeleteRed${count}" class="btnRed" type="button" name="button">x</button>
   <textarea value="Hola" id="textTitle${count}" placeholder="Título" class="titleNote" name="name" rows="1" cols="80"></textarea>
   <textarea id="textNote${count}" placeholder="Escribe aquí..." class="textNote" rows="8" name="name" rows="8" cols="80"></textarea>
   <button id="desencriptar${count}" class="buttonFunction hide" type="button" name="button">Desencriptar</button>
@@ -180,6 +193,8 @@ const startNote = () => {
   deleteDone.addEventListener('click', () => { deleteNoteDone(countActually); });
   const btnDelete = document.getElementById(`btnDelete${countActually}`);
   btnDelete.addEventListener('click', () => { deleteNote(countActually); });
+  const btnDeleteRed = document.getElementById(`btnDeleteRed${countActually}`);
+  btnDeleteRed.addEventListener('click', () => { deleteNoteRed(countActually); });
   const btnEncryptDone = document.getElementById(`btnEncryptDone${countActually}`);
   btnEncryptDone.addEventListener('click', () => { encryptNote(countActually); });
   const btnDecipher = document.getElementById(`desencriptar${countActually}`);

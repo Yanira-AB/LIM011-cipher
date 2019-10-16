@@ -169,6 +169,20 @@ body {
 }
 
 .textSmall {
-  font-size: 17px;
+  font-size: 16px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.btnRed {
+  background-color: darkred;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  height: 25px;
+  width: 25px;
+  margin-top: 18px;
+  margin-left: 247px;
+  margin-bottom: 15px;
+  padding-right: 5px;
 }
